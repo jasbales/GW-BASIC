@@ -14,28 +14,29 @@
 
 110 REM Convert height to total inches, then to meters
 120 heightInches = (feet * 12) + inches
-130 heightMeters = heightInches * 0.0254
+130 IF heightInches <= 0 THEN PRINT "Height cannot be zero. Please enter valid height values.": GOTO 60
+140 heightMeters = heightInches * 0.0254
 
-140 REM Convert weight to kilograms
-150 weightKg = weight * 0.453592
+150 REM Convert weight to kilograms
+160 weightKg = weight * 0.453592
 
-160 REM Calculate BMI
-170 bmi = weightKg / (heightMeters ^ 2)
+170 REM Calculate BMI
+180 bmi = weightKg / (heightMeters ^ 2)
 
-180 PRINT
-190 PRINT "Your BMI is "; bmi
+190 PRINT
+200 PRINT "Your BMI is "; bmi
 
-200 REM Determine weight category
-210 IF bmi < 18.5 THEN GOTO 240
-220 IF bmi >= 18.5 AND bmi <= 24.9 THEN GOTO 260
-230 IF bmi > 24.9 THEN GOTO 280
+210 REM Determine weight category
+220 IF bmi < 18.5 THEN GOTO 250
+230 IF bmi >= 18.5 AND bmi <= 24.9 THEN GOTO 270
+240 IF bmi > 24.9 THEN GOTO 290
 
-240 PRINT "You are underweight."
-250 GOTO 300
+250 PRINT "You are underweight."
+260 GOTO 300
 
-260 PRINT "You are of normal weight."
-270 GOTO 300
+270 PRINT "You are of normal weight."
+280 GOTO 300
 
-280 PRINT "You are overweight."
+290 PRINT "You are overweight."
 
 300 END
